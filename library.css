@@ -22,11 +22,12 @@ header {
 .books {
     align-self: center;
     width: 90vh;
-    margin-top: 30px;
+    margin-top: 50px;
     display: grid;
     grid-template: repeat(4, 200px) / repeat(3, 1fr);
     grid-auto-rows: 100px;
     gap: 20px;
+    overflow-y: auto;
 }
 .book {
     background-color: white;
@@ -39,6 +40,10 @@ header {
     border-style: none solid none none;
     span {
         font-weight: bold;
+    }
+    input {
+        width: 30%;
+        align-self: center;
     }
 }
 .book > div {
