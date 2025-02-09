@@ -12,32 +12,19 @@ function Book(title, author, pages, isRead) {
     this.info = function () {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead ? "read" : "not read yet"}`;
     }
-    this.read = function () {
-        this.isRead = !this.isRead;
-    }
 }
 
-var testBook = new Book("Hobbit", "Unknown Author", 52, false);
-myLibrary.push(testBook);
-{/* 
-<div class="books">
-    <div class="book">
-        <p><span>Unknown Book</span> by Unknown Author</p>
-        <div>
-            <p>256 pages</p>
-            <p>book read</p>
-        </div>
-        <div>
-            <input type="button" value="Delete">
-            <input type="button" value="Read">
-        </div>
-    </div>
-</div> */}
+Book.prototype.read = function () {
+    this.isRead = !this.isRead;
+}
+
+// var testBook = new Book("Hobbit", "Unknown Author", 52, false);
+// myLibrary.push(testBook);
 
 // Function to create a new book DOM and display to html
 function displayBookToLibrary() {
     let bookContainer = document.querySelector(".books");
-    // bookContainer.innerHTML = "";
+    bookContainer.innerHTML = "";
 
     for (let index = 0; index < myLibrary.length; index++) {
         let book = document.createElement("div");
@@ -57,5 +44,23 @@ function displayBookToLibrary() {
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    displayBookToLibrary();
 }
 
+let addBook = document.getElementById("addBook");
+addBook.addEventListener('click', () => {
+    let bookTitle = document.getElementById("title").value;
+    let bookAuthor = document.getElementById("author").value;
+    let bookPages = document.getElementById("pages");
+    let bookRead = document.getElementById("isread").checked;
+
+    addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead);
+});
+
+let dialog = document.getElementById("book-dialog");
+function openDialog() {
+    dialog.showModal();
+}
+function closeDialog() {
+    dialog.close();
+}

@@ -7,6 +7,40 @@
     font-variation-settings:
       "wdth" 100;
 }
+dialog {
+    width: 370px;
+    height: 150px;
+    margin-top: 10%;
+    border-radius: 10px;
+    > form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr) 40px;
+        height: 100%;
+        align-items: center;
+        place-items: center;
+        text-align: center;
+    }
+    label, input {
+        display: block;
+    }
+    #isread{
+        margin: auto;
+    }
+    #title, #author, #pages {
+        width: 60%;
+        margin: auto;
+    }
+    dialog > form > input[type="submit"] {
+        width: 50%;
+    }
+    dialog > form > input[type="button"] {
+        width: 40%;
+    }
+}
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.7);
+}
 body {
     background-color: rgb(246, 253, 255);
     margin: 0;

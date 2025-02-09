@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="library.css">
     <title>Odin Project Library</title>
-    <script src="library.js"></script>
 </head>
 <body class="roboto-side">
     <header>
         <h2>Library</h2>
-        <input type="button" value="Add Book" onclick="displayBookToLibrary()">
+        <input type="button" value="Add Book" onclick="openDialog()">
     </header>
+    <dialog id="book-dialog">
+        <form method="post">
+            <label for="title">Title<input type="text" id="title"></label>
+            <label for="author">Author<input type="text" id="author"></label>
+            <label for="pages">Pages<input type="number" id="pages"></label>
+            <label for="isread">Book Read<input type="checkbox" id="isread"></label>
+            <input type="submit" value="Submit Book" id="addBook">
+            <input type="button" value="Close" onclick="closeDialog()">
+        </form>
+    </dialog>
     <div class="books">
         <div class="book">
             <p><span>Unknown Book</span> by Unknown Author</p>
@@ -25,5 +34,6 @@
             </div>
         </div>
     </div>
+    <script src="library.js" defer></script>
 </body>
 </html>
