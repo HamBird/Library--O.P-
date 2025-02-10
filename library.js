@@ -40,7 +40,7 @@ function displayBookToLibrary() {
 
         var bookDetails = "";
         bookDetails += `<p><span>${myLibrary[index].title}</span> by ${myLibrary[index].author}</p>`;
-        bookDetails += `<div><p>${myLibrary[index].pages} pages</p><p>${myLibrary[index].isRead ? "Read" : "Not Read"}</p></div>`;
+        bookDetails += `<div><p>${myLibrary[index].pages} pages</p><p class="read-${index}">${myLibrary[index].isRead ? "Read" : "Not Read"}</p></div>`;
         bookDetails += `<div><input type="button" value="Delete" class="deletebtn" data-index="${index}"><input type="button" value="Read" class="readbtn" data-index="${index}"></div>`;
         book.innerHTML = bookDetails;
         // appends book element to books container
@@ -56,8 +56,10 @@ function displayBookToLibrary() {
     });
     readBtns.forEach(btn => {
         btn.addEventListener("click", () => {
+            // uses the index dataset to toggle the read status on the book
             myLibrary[btn.dataset.index].toggleread();
-            displayBookToLibrary();
+            // grabs the text element and replaces the text based on the new read status
+            document.querySelector(`.read-${btn.dataset.index}`).innerHTML = myLibrary[btn.dataset.index].isRead ? "Read" : "Not Read"
         });
     });
 }
