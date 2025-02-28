@@ -2,18 +2,33 @@
 const myLibrary = [];
 
 // object constructor to hold relevant data for each book
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead ? "read" : "not read yet"}`;
+// function Book(title, author, pages, isRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+//     this.info = function () {
+//         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead ? "read" : "not read yet"}`;
+//     }
+// }
+// // prototype function to toggle read status
+// Book.prototype.toggleread = function () {
+//     this.isRead = !this.isRead;
+// }
+
+// Class constructor to hold revelant data for each book
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
     }
-}
-// prototype function to toggle read status
-Book.prototype.toggleread = function () {
-    this.isRead = !this.isRead;
+    // class function per instance to toggle read status
+    toggleread() {
+        this.isRead = !this.isRead;
+    }
+
 }
 
 // Test Data for array
